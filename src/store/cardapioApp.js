@@ -68,7 +68,6 @@ const actions = {
         })
     },
     createPedido({ state, dispatch }, payload) {
-        console.log(state.produto)
         ClienteResource.createPedido({
             empresa: {
                 _id: state.empresaSelecionada._id,
@@ -121,7 +120,6 @@ const actions = {
         })
     },
     updatePedido({ dispatch }, payload) {
-        console.log(payload)
         EmpresaResource.updatePedido(payload.id, {status: payload.value}).then(() => {
             dispatch('listaPedidosEmpresa')
         })
@@ -212,7 +210,6 @@ const actions = {
         }
 
         ClienteResource.pagamento(payload).then( res => {
-            console.log(res)
             dispatch('updatePedido', {
                 id: state.pedido._id,
                 value: 'Pagamento Realizado'
